@@ -11,9 +11,7 @@
 <div th:if="${param.logout}">
   You have been logged out.
 </div>
-{{#message}}
-  {{message}}
-{{/message}}
+<h1 th:text="${message}">th:text="${message}"</h1>
 <form th:action="@{/registration}" method="post">
   <div><label> User Name : <input type="text" name="username"/> </label></div>
   <div><label> Password: <input type="password" name="password"/> </label></div>
