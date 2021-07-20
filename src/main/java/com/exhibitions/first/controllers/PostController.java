@@ -3,7 +3,6 @@ package com.exhibitions.first.controllers;
 import com.exhibitions.first.models.Post;
 import com.exhibitions.first.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,73 +11,86 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
-public class firstController {
+public class PostController {
 
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("/first")
-    public String first(Model model) {
+    @GetMapping("/post")
+    public String postMain(Model model) {
         Iterable<Post> posts = postRepository.findAll();
         model.addAttribute("posts", posts);
-        return "first";
+        return "post-main";
     }
 
-    @GetMapping("/first/add")
-    public String add(Model model) {
-        return "add";
+    @GetMapping("/post/add")
+    public String postAdd(Model model) {
+        return "post-add";
     }
 
-    @PostMapping("/first/add")
-    public String PostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
+    @PostMapping("/post/add")
+    public String postPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
         Post post = new Post(title, anons, full_text);
         postRepository.save(post);
-        return "redirect:/first";
+        return "redirect:/post";
     }
 
-    @GetMapping("/first/{id}")
-    public String firstDetails(@PathVariable(value = "id") long id, Model model) {
+    @GetMapping("/post/{id}")
+    public String postDetails(@PathVariable(value = "id") long id, Model model) {
         if (!postRepository.existsById(id)) {
-            return "redirect:first";
+            return "redirect:/post";
         }
 
         Optional<Post> post = postRepository.findById(id);
         ArrayList<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("post", res);
-        return "firstDetails";
+        return "post-details";
     }
 
-    @GetMapping("/first/{id}/edit")
-    public String firstEdit(@PathVariable(value = "id") long id, Model model) {
+    @GetMapping("/post/{id}/edit")
+    public String postEdit(@PathVariable(value = "id") long id, Model model) {
         if (!postRepository.existsById(id)) {
-            return "redirect:first";
+            return "redirect:/post";
         }
 
         Optional<Post> post = postRepository.findById(id);
         ArrayList<Post> res = new ArrayList<>();
         post.ifPresent(res::add);
         model.addAttribute("post", res);
-        return "firstEdit";
+        return "post-edit";
     }
 
-    @PostMapping("/first/{id}/edit")
-    public String PostUpdate(@PathVariable(value = "id") long id, @RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
+    @PostMapping("/post/{id}/edit")
+    public String postUpdate(@PathVariable(value = "id") long id,@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
         Post post = postRepository.findById(id).orElseThrow();
         post.setTitle(title);
         post.setAnons(anons);
         post.setFull_text(full_text);
         postRepository.save(post);
-        return "redirect:/first";
+        return "redirect:/post";
     }
 
-    @PostMapping("/first/{id}/remove")
-    public String PostDelete(@PathVariable(value = "id") long id, Model model) {
+    @PostMapping("/post/{id}/remove")
+    public String postDelete(@PathVariable(value = "id") long id, Model model) {
         Post post = postRepository.findById(id).orElseThrow();
         postRepository.delete(post);
-        return "redirect:/first";
+        return "redirect:/post";
+    }
+
+    @PostMapping("filter")
+    public String filter(@RequestParam String filter,Model model) {
+        Iterable<Post> post;
+        if (filter != null && filter.isEmpty()) {
+            post = postRepository.findByTitle(filter);
+        } else {
+            post = postRepository.findAll();
+        }
+        model.addAttribute("post", post);
+        return "post";
     }
 }
