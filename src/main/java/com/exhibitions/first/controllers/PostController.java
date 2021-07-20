@@ -84,7 +84,7 @@ public class PostController {
 
     @PostMapping("filter")
     public String filter(@RequestParam String filter, Model model) {
-        List<Post> post;
+        Iterable<Post> post;
         if (filter != null && !filter.isEmpty()) {
             post = postRepository.findByTitle(filter);
         } else {
