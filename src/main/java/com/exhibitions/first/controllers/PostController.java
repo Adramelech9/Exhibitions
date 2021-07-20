@@ -83,14 +83,14 @@ public class PostController {
     }
 
     @PostMapping("filter")
-    public String filter(@RequestParam String filter,Model model) {
-        Iterable<Post> post;
-        if (filter != null && filter.isEmpty()) {
+    public String filter(@RequestParam String filter, Model model) {
+        List<Post> post;
+        if (filter != null && !filter.isEmpty()) {
             post = postRepository.findByTitle(filter);
         } else {
             post = postRepository.findAll();
         }
         model.addAttribute("post", post);
-        return "post";
+        return "post-main";
     }
 }
