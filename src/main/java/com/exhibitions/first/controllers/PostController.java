@@ -1,8 +1,10 @@
 package com.exhibitions.first.controllers;
 
 import com.exhibitions.first.models.Post;
+import com.exhibitions.first.models.User;
 import com.exhibitions.first.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,8 +24,8 @@ public class PostController {
 
     @GetMapping("/post")
     public String postMain(Model model) {
-        Iterable<Post> posts = postRepository.findAll();
-        model.addAttribute("posts", posts);
+        Iterable<Post> post = postRepository.findAll();
+        model.addAttribute("post", post);
         return "post-main";
     }
 
@@ -33,8 +35,8 @@ public class PostController {
     }
 
     @PostMapping("/post/add")
-    public String postPostAdd(@RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
-        Post post = new Post(title, anons, full_text);
+    public String postPostAdd(@AuthenticationPrincipal User user, @RequestParam String title, @RequestParam String anons, @RequestParam String full_text, Model model) {
+        Post post = new Post(title, anons, full_text, user);
         postRepository.save(post);
         return "redirect:/post";
     }
@@ -90,7 +92,7 @@ public class PostController {
         } else {
             post = postRepository.findAll();
         }
-        model.addAttribute("posts", post);
+        model.addAttribute("post", post);
         return "post-main";
     }
 }

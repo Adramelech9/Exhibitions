@@ -12,6 +12,7 @@
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
         <p th:text="${el.full_text}"/>
+        <p th:text="${el.authorName}"/>
         <p><b>Цена: </b> <span th:text="${el.id}"/> грн.</p>
         <a th:href="'/post/' + ${el.id} + '/edit'" class="btn btn-warning">Редактировать</a><br><br>
         <form th:action="'/post/' + ${el.id} + '/remove'" method="post">
