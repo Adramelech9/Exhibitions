@@ -28,16 +28,6 @@ public class MainController {
         return "account";
     }
 
-    /*@PostMapping("filter")
-    public String filter(@RequestParam String title, Model model) {
-        Iterable<Post> posts;
-        if (title != null && !title.isEmpty()) {
-            posts = postRepository.findByTitle(title);
-        } else posts = postRepository.findAll();
-        model.addAttribute("messages", posts);
-        return "first";
-    }*/
-
     /*@GetMapping("/greeting")  //работа исключительно с "Гет" запросом
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);

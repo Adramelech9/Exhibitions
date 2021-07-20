@@ -90,7 +90,7 @@ public class PostController {
         } else {
             post = postRepository.findAll();
         }
-        model.addAttribute("post", post);
+        model.addAttribute("posts", post);
         return "post-main";
     }
 }
