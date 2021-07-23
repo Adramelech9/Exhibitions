@@ -23,9 +23,15 @@ public class PostController {
     private PostRepository postRepository;
 
     @GetMapping("/post")
-    public String postMain(Model model) {
-        Iterable<Post> post = postRepository.findAll();
+    public String postMain(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
+        Iterable<Post> post;
+        if (filter != null && !filter.isEmpty()) {
+            post = postRepository.findByTitle(filter);
+        } else {
+            post = postRepository.findAll();
+        }
         model.addAttribute("post", post);
+        model.addAttribute("filter", filter);
         return "post-main";
     }
 
@@ -82,17 +88,5 @@ public class PostController {
         Post post = postRepository.findById(id).orElseThrow();
         postRepository.delete(post);
         return "redirect:/post";
-    }
-
-    @PostMapping("filter")
-    public String filter(@RequestParam String filter, Model model) {
-        Iterable<Post> post;
-        if (filter != null && !filter.isEmpty()) {
-            post = postRepository.findByTitle(filter);
-        } else {
-            post = postRepository.findAll();
-        }
-        model.addAttribute("post", post);
-        return "post-main";
     }
 }
