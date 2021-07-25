@@ -53,7 +53,7 @@ public class PostController {
         Post post = new Post(title, anons, full_text, user);
         if (file == null || file.isEmpty()) {
             post.setFilename("default.png");
-        } else if(file != null) {
+        } else if(file != null && !file.getOriginalFilename().isEmpty()) {  //&& !=... если убрать дефолтное значение
             File uploadDir = new File(uploadPath);
 
             if (!uploadDir.exists()) {
