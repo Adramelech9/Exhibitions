@@ -12,6 +12,9 @@
     <div th:each="el : ${post}" class="alert alert-info mt-2">
         <h3 th:text="${el.title}"/>
         <p th:text="${el.anons}"/>
+        <div>
+            <img th:src="@{/img/{filename}(filename = ${el.filename})}">
+        </div>
         <a th:href="'/post/' + ${el.id}" class="btn btn-warning">Подробнее</a>
 
     </div>

@@ -9,6 +9,7 @@ public class Post {
     private Long id;
     private String title, anons, full_text;
     private int view;
+    private String filename;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = ("user_id"))
@@ -75,5 +76,13 @@ public class Post {
 
     public void setAuthor(User author) {
         this.author = author;
+    }
+
+    public String getFilename() {
+        return filename;
+    }
+
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 }
