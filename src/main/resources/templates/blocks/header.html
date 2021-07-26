@@ -17,9 +17,12 @@
         <input type="text" name="filter" th:value="${filter}" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
       </form>
 
-      <div class="text-end">
+      <div class="text-end" sec:authorize="isAnonymous()">
         <button onclick="window.location.href = '/login';" type="button" class="btn btn-outline-light me-2">Login</button>
         <button onclick="window.location.href = '/registration';" type="button" class="btn btn-warning">Sign-up</button>
+      </div>
+      <div class="text-end" sec:authorize="!isAnonymous()">
+        <button onclick="window.location.href = '/logout';" type="button" class="btn btn-outline-light me-2">logout</button>
       </div>
     </div>
   </div>

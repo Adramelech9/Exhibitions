@@ -9,9 +9,7 @@
 <header th:insert="blocks/header :: header"></header>
 <br>
 <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-<form th:action="@{/logout}" method="post">
-  <input type="submit" value="Sign Out"/>
-</form>
+<br>
 <span sec:authorize="hasAuthority('ADMIN')"><a href="/user">User list</a></span>
 <div class="container mt-5"></div>
 <h1 th:text="${title}"/>
