@@ -5,6 +5,7 @@ import com.exhibitions.first.models.User;
 import com.exhibitions.first.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,6 +44,7 @@ public class PostController {
         return "post-main";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/post/add")
     public String postAdd(Model model) {
         return "post-add";
