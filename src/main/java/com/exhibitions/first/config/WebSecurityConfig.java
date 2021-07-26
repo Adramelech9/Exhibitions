@@ -1,5 +1,6 @@
 package com.exhibitions.first.config;
 
+import com.exhibitions.first.models.Role;
 import com.exhibitions.first.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +21,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/post", "/registration", "/static/**").permitAll()
+                    .antMatchers("/", "/post", "/registration", "/static/**", "img/*").permitAll()
+                    .antMatchers("/post/add").hasRole(Role.ADMIN.name())
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -30,7 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .logout()
                     .permitAll();
-        http.csrf().disable();
     }
 
     @Override
