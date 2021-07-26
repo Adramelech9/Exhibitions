@@ -18,7 +18,6 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,8 +43,8 @@ public class PostController {
         return "post-main";
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/post/add")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String postAdd(Model model) {
         return "post-add";
     }
