@@ -1,20 +1,17 @@
 package com.exhibitions.first.controllers;
 
-import com.exhibitions.first.models.Role;
 import com.exhibitions.first.models.User;
-import com.exhibitions.first.repository.UserRepository;
+import com.exhibitions.first.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Collections;
-
 @Controller
 public class RegistrationController {
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @GetMapping("/registration")
     public String registration() {
@@ -23,16 +20,11 @@ public class RegistrationController {
 
     @PostMapping("/registration")
     public String addUser(User user, Model model) {
-        User userFromDb = userRepository.findByUsername(user.getUsername());
-
-        if (userFromDb != null) {
+        if (!userService.addUser(user)) {
             model.addAttribute("post","User exists!" );
             return "registration";
         }
 
-        user.setActive(true);
-        user.setRoles(Collections.singleton(Role.USER));
-        userRepository.save(user);
         return "redirect:/login";
     }
 }

@@ -22,12 +22,6 @@ public class MainController {
         return "home";
     }
 
-    @GetMapping("/account")
-    public String account(Model model) {
-        model.addAttribute("title", "Аккаунт");
-        return "account";
-    }
-
     /*@GetMapping("/greeting")  //работа исключительно с "Гет" запросом
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
         model.addAttribute("name", name);
