@@ -12,11 +12,13 @@
   You have been logged out.
 </div>
 Add new user
-<p th:text="${post}"/>
 <form th:action="@{/registration}" method="post">
-  <div><label> User Name : <input type="text" name="username"/> </label></div>
+  <div><label> Логин : <input type="text" name="username"/> </label></div>
+  <div th:text="${usernameError}"/>
   <div><label> Email : <input type="email" name="email"/> </label></div>
-  <div><label> Password: <input type="password" name="password"/> </label></div>
+  <div><label> Пароль: <input type="password" name="password"/> </label></div>
+  <div th:text="${passwordError}"/>
+  <div><label> Повторите пароль: <input type="password" name="password2"/> </label></div>
   <div><input type="submit" value="Registration"/></div>
 </form>
 </body>

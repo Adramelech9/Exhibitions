@@ -1,8 +1,8 @@
-create table hibernate_sequence (next_val bigint) engine=InnoDB
+create table if not exists hibernate_sequence (next_val bigint) engine=InnoDB
 
 insert into hibernate_sequence values ( 1 )
 
-create table post (
+create table if not exists post (
     id bigint not null,
     anons varchar(255),
     filename varchar(255),
@@ -12,11 +12,11 @@ create table post (
     user_id bigint,
     primary key (id)) engine=InnoDB
 
-create table user_role (
+create table if not exists user_role (
     user_id bigint not null,
     roles varchar(255)) engine=InnoDB
 
-create table usr (
+create table if not exists usr (
     id bigint not null,
     active bit not null,
     email varchar(255),
@@ -24,10 +24,10 @@ create table usr (
     username varchar(255) not null,
     primary key (id)) engine=InnoDB
 
-alter table post
+alter table if exists post
     add constraint post_user_fk
     foreign key (user_id) references usr (id)
 
-alter table user_role
+alter table if exists user_role
     add constraint user_role_user_fk
     foreign key (user_id) references usr (id)

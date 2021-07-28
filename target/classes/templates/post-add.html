@@ -12,6 +12,7 @@
   <form action="/post/add" method="post" enctype="multipart/form-data">
     <input type="file" name="file">
     <input type="text" name="title" placeholder="Введите название выставки" class="form-control"><br>
+    <div class="invalid-feedback" th:if="${post}" th:text="${textError}"/>
     <input type="text" name="anons" placeholder="Введите дату" class="form-control"><br>
     <textarea name="full_text" placeholder="Текст" class="form-control"></textarea><br>
     <button type="submit" class="btn btn-success">Добавить</button>

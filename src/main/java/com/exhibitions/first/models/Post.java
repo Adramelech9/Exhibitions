@@ -1,15 +1,21 @@
 package com.exhibitions.first.models;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String title, anons, full_text;
+    private String filename, anons;
     private int view;
-    private String filename;
+    @NotBlank(message = "Поле не может быть пустым")
+    private String title;
+    @Length(max = 2048, message = "Превышен лимит символов(2кБ)")
+    private String full_text;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = ("user_id"))
