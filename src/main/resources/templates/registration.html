@@ -7,10 +7,12 @@
 <body>
 Add new user
 <form th:action="@{/registration}" method="post">
-  <div><label> Логин : <input type="text" name="username"Z/> </label></div>
+  <div><label> Логин : <input type="text" name="username"/> </label></div>
+  <div th:text="${Errors['username']}" th:if="${Errors}"/>
   <div th:text="${usernameError}"/>
   <div><label> Email : <input type="email" name="email"/> </label></div>
   <div><label> Пароль: <input type="password" name="password"/> </label></div>
+  <div th:text="${Errors['password']}" th:if="${Errors}"/>
   <div th:text="${passwordError}"/>
   <div><label> Повторите пароль: <input type="password" name="password2"/> </label></div>
   <div><input type="submit" value="Registration"/></div>
