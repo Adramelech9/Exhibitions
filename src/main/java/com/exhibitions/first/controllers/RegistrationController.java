@@ -39,7 +39,6 @@ public class RegistrationController {
             model.addAttribute("usernameError","User exists!" );
             return "registration";
         }
-
         return "redirect:/login";
     }
 }
