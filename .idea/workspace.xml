@@ -93,7 +93,6 @@
       <option name="ALTERNATIVE_JRE_PATH" value="16" />
       <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.FirstApplication" />
       <module name="first" />
-      <option name="PROGRAM_PARAMETERS" value="--spring.profiles.active=dev" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.exhibitions.first.FirstApplicationTests" />
