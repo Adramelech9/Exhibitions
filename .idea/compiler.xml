@@ -12,7 +12,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Exhibitions 3" target="16" />
-      <module name="first" target="16" />
+      <module name="first" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
