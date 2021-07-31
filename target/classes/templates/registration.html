@@ -3,6 +3,7 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
   <title>Spring Security Example </title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 Add new user
@@ -15,6 +16,11 @@ Add new user
   <div th:text="${Errors['password']}" th:if="${Errors}"/>
   <div th:text="${passwordError}"/>
   <div><label> Повторите пароль: <input type="password" name="password2"/> </label></div>
+  <div th:if="${passwordError}">Поле не может быть пустым</div>
+  <div class="g-recaptcha" data-sitekey="6LeoCM0bAAAAABKH862laZRCU3Pb5qpNpSKfjgDz"></div>
+  <div th:if="${captchaError}">
+    <div th:text="${captchaError}"/>
+  </div>
   <div><input type="submit" value="Registration"/></div>
 </form>
 </body>
