@@ -1,5 +1,8 @@
 insert into usr (id, username, password, active, email)
-    values (1, 'admin', '$2a$08$wHNpwgLju5YeY1o1EQnIUet.t.EvkTbXel7AIU9jcUUyDFSHhqciO', true, 'admin@gmail.com');
+    values (1, 'admin', '1234', true, 'admin@gmail.com');
 
 insert into user_role (user_id, roles)
     values (1, 'ADMIN');
+
+create extension if not exists pgcrypto;
+update usr set password = crypt(password, gen_salt('bf', 8))

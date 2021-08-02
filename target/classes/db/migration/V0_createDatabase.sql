@@ -1,4 +1,3 @@
-DROP DATABASE IF EXISTS exhibitions;
+DROP DATABASE exhibitions;
 
-CREATE DATABASE IF NOT EXISTS exhibitions;
-USE exhibitions;
+CREATE DATABASE exhibitions;
