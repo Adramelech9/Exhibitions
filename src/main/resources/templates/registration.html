@@ -6,7 +6,8 @@
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-Add new user
+<header th:insert="blocks/header :: header"></header>
+
 <form th:action="@{/registration}" method="post">
   <div><label> Логин : <input type="text" name="username"/> </label></div>
   <div th:text="${Errors['username']}" th:if="${Errors}"/>
