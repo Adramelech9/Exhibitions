@@ -14,7 +14,7 @@ public class Post {
     private int view;
     @NotBlank(message = "Поле не может быть пустым")
     private String title;
-    @Length(max = 2048, message = "Превышен лимит символов(2кБ)")
+    @Length(max = 2048, message = "Превышен лимит символов")
     private String full_text;
 
     @ManyToOne(fetch = FetchType.EAGER)
