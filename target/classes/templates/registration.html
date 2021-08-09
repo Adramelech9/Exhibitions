@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Spring Security Example </title>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<form th:action="@{/registration}" method="post">
+  <div><label> Логин : <input type="text" name="username"/> </label></div>
+  <div th:text="${Errors['username']}" th:if="${Errors}"/>
+  <div th:text="${usernameError}"/>
+  <div><label> Email : <input type="email" name="email"/> </label></div>
+  <div><label> Пароль: <input type="password" name="password"/> </label></div>
+  <div th:text="${Errors['password']}" th:if="${Errors}"/>
+  <div th:text="${passwordError}"/>
+  <div><label> Повторите пароль: <input type="password" name="password2"/> </label></div>
+  <div th:if="${passwordError}">Поле не может быть пустым</div>
+  <div class="g-recaptcha" data-sitekey="6LeuxtAbAAAAAA_1G1FroiwFjnIAlVQQqgWYkX8J"></div>
+  <div th:if="${captchaError}">
+    <div th:text="${captchaError}"/>
+  </div>
+  <div><input type="submit" value="Registration"/></div>
+</form>
+</body>
+</html>
+

@@ -5,6 +5,10 @@ import com.exhibitions.first.models.User;
 import com.exhibitions.first.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -34,14 +38,39 @@ public class PostController {
     private String uploadPath;
 
     @GetMapping("/post")
-    public String postMain(@RequestParam(required = false, defaultValue = "") String filter, Model model) {
-        Iterable<Post> post;
+    public String postMain(
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model,
+            @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Post> page;
         if (filter != null && !filter.isEmpty()) {
-            post = postRepository.findByTitle(filter);
+            page = postRepository.findByTitle(filter, pageable);
         } else {
-            post = postRepository.findAll();
+            page = postRepository.findAll(pageable);
         }
-        model.addAttribute("post", post);
+        int[] sizeList = {5, 10, 15, 20};
+        int[] body;
+        if (page.getTotalPages() > 7) {
+            int totalPages = page.getTotalPages();
+            int pageNumber = page.getNumber()+1;
+            int[] head = (pageNumber > 4) ? new int[]{1, -1} : new int[]{1,2,3};
+            int[] bodyBefore = (pageNumber > 4 && pageNumber < totalPages - 1) ? new int[]{pageNumber-2, pageNumber-1} : new int[]{};
+            int[] bodyCenter = (pageNumber > 3 && pageNumber < totalPages - 2) ? new int[]{pageNumber} : new int[]{};
+            int[] bodyAfter = (pageNumber > 2 && pageNumber < totalPages - 3) ? new int[]{pageNumber+1, pageNumber+2} : new int[]{};
+            int[] tail = (pageNumber < totalPages - 3) ? new int[]{-1, totalPages} : new int[] {totalPages-2, totalPages-1, totalPages};
+            body = ControllerUtils.merge(head, bodyBefore, bodyCenter, bodyAfter, tail);
+
+        } else {
+            body = new int[page.getTotalPages()];
+            for (int i = 0; i < page.getTotalPages(); i++) {
+                body[i] = 1+i;
+            }
+        }
+
+        model.addAttribute("sizeList", sizeList);
+        model.addAttribute("body", body);
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/post");
         model.addAttribute("filter", filter);
         return "post-main";
     }

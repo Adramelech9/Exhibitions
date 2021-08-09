@@ -1,10 +1,12 @@
 package com.exhibitions.first.repository;
 
 import com.exhibitions.first.models.Post;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
-
 public interface PostRepository extends CrudRepository<Post, Long> {
-    List<Post> findByTitle(String title);
+
+    Page<Post> findAll(Pageable pageable);
+    Page<Post> findByTitle(String title, Pageable pageable);
 }

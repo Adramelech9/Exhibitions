@@ -25,8 +25,8 @@
       <list>
         <option value="Kotlin Class" />
         <option value="Interface" />
-        <option value="HTML File" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -64,7 +64,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -75,6 +75,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -90,12 +91,11 @@
   </component>
   <component name="RunManager" selected="Application.FirstApplication">
     <configuration name="FirstApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="16" />
       <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.FirstApplication" />
       <module name="first" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.exhibitions.first.FirstApplicationTests" />
+          <option name="PATTERN" value="com.exhibitions.first.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,29 +103,83 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FirstApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Login.badCredentials" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="first" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.exhibitions.first.FirstApplicationTests" />
+          <option name="PATTERN" value="com.exhibitions.first.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="com.exhibitions.first" />
-      <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.FirstApplicationTests" />
+      <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.Login" />
+      <option name="METHOD_NAME" value="badCredentials" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="first" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exhibitions.first.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exhibitions.first" />
+      <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.MainControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainControllerTest.addPostToListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="first" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exhibitions.first.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exhibitions.first" />
+      <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.MainControllerTest" />
+      <option name="METHOD_NAME" value="addPostToListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainControllerTest.postListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="first" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.exhibitions.first.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.exhibitions.first" />
+      <option name="MAIN_CLASS_NAME" value="com.exhibitions.first.MainControllerTest" />
+      <option name="METHOD_NAME" value="postListTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="JUnit.Login.badCredentials" />
+      <item itemvalue="JUnit.MainControllerTest" />
+      <item itemvalue="JUnit.MainControllerTest.postListTest" />
+      <item itemvalue="JUnit.MainControllerTest.addPostToListTest" />
       <item itemvalue="Application.FirstApplication" />
-      <item itemvalue="JUnit.FirstApplicationTests" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.FirstApplication" />
-        <item itemvalue="JUnit.FirstApplicationTests" />
+        <item itemvalue="JUnit.MainControllerTest.addPostToListTest" />
+        <item itemvalue="JUnit.MainControllerTest.postListTest" />
+        <item itemvalue="JUnit.MainControllerTest" />
+        <item itemvalue="JUnit.Login.badCredentials" />
       </list>
     </recent_temporary>
   </component>
