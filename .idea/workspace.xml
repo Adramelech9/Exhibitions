@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aeaf1f05-51cd-4f3d-8d8d-1711ed9ff612" name="Default Changelist" comment="" />
+    <list default="true" id="aeaf1f05-51cd-4f3d-8d8d-1711ed9ff612" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -64,7 +66,11 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/resources" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -167,11 +173,11 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.FirstApplication" />
       <item itemvalue="JUnit.Login.badCredentials" />
       <item itemvalue="JUnit.MainControllerTest" />
       <item itemvalue="JUnit.MainControllerTest.postListTest" />
       <item itemvalue="JUnit.MainControllerTest.addPostToListTest" />
-      <item itemvalue="Application.FirstApplication" />
     </list>
     <recent_temporary>
       <list>
@@ -191,8 +197,21 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1625157378641</updated>
+      <workItem from="1632083016247" duration="433000" />
+      <workItem from="1632138390858" duration="5091000" />
+      <workItem from="1632155281766" duration="38000" />
+      <workItem from="1632158849246" duration="4071000" />
+      <workItem from="1632172765818" duration="63000" />
+      <workItem from="1632173091797" duration="175000" />
+      <workItem from="1632210180292" duration="4000" />
+      <workItem from="1632219052405" duration="1847000" />
+      <workItem from="1632223340479" duration="4416000" />
+      <workItem from="1632245288283" duration="1198000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
